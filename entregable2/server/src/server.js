@@ -5,12 +5,12 @@ import hbs from "express-handlebars";
 import __dirname from './utils.js';
 import http from 'http';
 import { Server } from "socket.io";
-// import cors from 'cors';
+import cors from 'cors';
 
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(urlencoded({extended: true}));
@@ -43,7 +43,7 @@ export function getIO() {
 
 const connectMongoDB = async () => {
     try {
-        await mongoose.connect('mongodb+srv://cuede:timecrisis@ecommerce.xsh8fec.mongodb.net/ecommerce');
+        await mongoose.connect('.');
         console.log("Conectado con exito a MongoDB usando Moongose.");
     } catch (error) {
         console.error("No se pudo conectar a la BD usando Moongose: " + error);
